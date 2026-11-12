@@ -1,0 +1,40 @@
+EMAILS (2 found)
+  - user@example.com
+  - firstname.lastname@company.co.uk
+
+URLS (2 found)
+  - https://www.example.com
+  - https://subdomain.example.org/page
+
+PHONE NUMBERS (3 found)
+  - (123) 456-7890
+  - 123-456-7890
+  - 123.456.7890
+
+CREDIT CARDS (2 found)
+  - 1234 5678 9012 3456
+  - 1234-5678-9012-3456
+
+TIMES (4 found)
+  - 14:30
+  - 2:30 PM
+  - 09:05
+  - 11:45 am
+
+HTML TAGS (5 found)
+  - <p>
+  - <div class="example">
+  - <img src="image.jpg" alt="description">
+  - </div>
+  - <br/>
+
+HASHTAGS (3 found)
+  - #example
+  - #ThisIsAHashtag
+  - #python_3
+
+CURRENCY (4 found)
+  - $19.99
+  - $1,234.56
+  - $5
+  - $1,234,567.89
