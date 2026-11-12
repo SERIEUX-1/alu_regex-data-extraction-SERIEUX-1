@@ -139,3 +139,48 @@ HTML_TAG = re.compile(
 )
 
 # --------------------------------------------------------------------------- #
+# 7. HASHTAGS
+#    #example | #ThisIsAHashtag
+# --------------------------------------------------------------------------- #
+HASHTAG = re.compile(
+    r"""
+    (?<![\w&/])                   # not inside a word, an HTML entity (&#39;)
+                                  # or a URL fragment (page.html#top)
+    \#                            # the hash symbol (escaped for VERBOSE mode)
+    [A-Za-z]                      # must start with a letter (rejects #123)
+    [A-Za-z0-9_]*                 # then letters, digits or underscores
+    """,
+    re.VERBOSE,
+)
+
+# --------------------------------------------------------------------------- #
+# 8. CURRENCY AMOUNTS
+#    $19.99 | $1,234.56
+# --------------------------------------------------------------------------- #
+CURRENCY = re.compile(
+    r"""
+    \$                            # dollar sign
+    (?:
+        \d{1,3}(?:,\d{3})+        # thousands with commas: 1,234 | 1,234,567
+      |
+        \d+                       # or plain digits: 5 | 19 | 1234
+    )
+    (?:\.\d{2})?                  # optional cents: exactly two digits
+    (?!\d|,\d|\.\d)               # reject malformed tails: $1,23.456 / $19.999
+    """,
+    re.VERBOSE,
+)
+
+# --------------------------------------------------------------------------- #
+# Registry used by extractor.py and the tests
+# --------------------------------------------------------------------------- #
+PATTERNS = {
+    "emails": EMAIL,
+    "urls": URL,
+    "phone_numbers": PHONE,
+    "credit_cards": CREDIT_CARD,
+    "times": TIME,
+    "html_tags": HTML_TAG,
+    "hashtags": HASHTAG,
+    "currency": CURRENCY,
+}
