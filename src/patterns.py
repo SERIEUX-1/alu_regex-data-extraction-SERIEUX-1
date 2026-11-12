@@ -94,3 +94,48 @@ CREDIT_CARD = re.compile(
 )
 
 # --------------------------------------------------------------------------- #
+# 5. TIME (12-hour and 24-hour)
+#    14:30 | 2:30 PM
+# --------------------------------------------------------------------------- #
+TIME = re.compile(
+    r"""
+    \b
+    (?:
+        # 12-hour clock: hour 1-12, minutes 00-59, AM/PM (listed FIRST so
+        # "2:30 PM" is captured whole rather than just "2:30")
+        (?:0?[1-9]|1[0-2]):[0-5]\d[ ]?[AaPp][Mm]
+      |
+        # 24-hour clock: hour 0-23, minutes 00-59 (and not followed by AM/PM)
+        (?:[01]?\d|2[0-3]):[0-5]\d(?![ ]?[AaPp][Mm])
+    )
+    \b
+    (?!:\d)                       # reject 12:30:45 style (seconds)
+    """,
+    re.VERBOSE,
+)
+
+# --------------------------------------------------------------------------- #
+# 6. HTML TAGS
+#    <p> | <div class="example"> | <img src="image.jpg" alt="description">
+# --------------------------------------------------------------------------- #
+HTML_TAG = re.compile(
+    r"""
+    </?                           # "<" or "</" (closing tag)
+    [A-Za-z][A-Za-z0-9]*          # tag name: must start with a letter
+    (?:                           # zero or more attributes
+        \s+                       #   whitespace before each attribute
+        [A-Za-z_:][\w:.-]*        #   attribute name
+        (?:                       #   optional value
+            \s*=\s*
+            (?:"[^"<>]*"          #     double-quoted value
+              |'[^'<>]*'          #     single-quoted value
+              |[^\s"'=<>`]+       #     unquoted value
+            )
+        )?
+    )*
+    \s*/?>                        # optional self-closing slash, then ">"
+    """,
+    re.VERBOSE,
+)
+
+# --------------------------------------------------------------------------- #
