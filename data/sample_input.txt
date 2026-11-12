@@ -1,0 +1,33 @@
+=== SAMPLE API RESPONSE (mixed valid and invalid data) ===
+
+[EMAILS]
+Contact us: user@example.com or firstname.lastname@company.co.uk
+Invalid: user@  @example.com  user@@example.com  plainaddress
+
+[URLS]
+Visit https://www.example.com or https://subdomain.example.org/page.
+Invalid: htp://broken.com  https://nodomain  www.example.com
+
+[PHONE NUMBERS]
+Call (123) 456-7890, 123-456-7890 or 123.456.7890.
+Invalid: 12-3456-7890  123-456.7890  1234567
+
+[CREDIT CARDS - fake test numbers only]
+Pay with 1234 5678 9012 3456 or 1234-5678-9012-3456.
+Invalid: 1234 5678-9012 3456  1234 5678 9012  12345 6789 0123 4567
+
+[TIMES]
+Meeting at 14:30, lunch at 2:30 PM, standup at 09:05 and 11:45 am.
+Invalid: 25:70  14:60  13:45 PM  12:30:45
+
+[HTML TAGS]
+<p> <div class="example"> <img src="image.jpg" alt="description"> </div> <br/>
+Invalid: <div class="broken>  < p >  <3  5 < 6 > 4
+
+[HASHTAGS]
+Trending: #example #ThisIsAHashtag #python_3
+Invalid: #123  page.html#top  &#39;
+
+[CURRENCY]
+Prices: $19.99, $1,234.56, $5 and $1,234,567.89.
+Invalid: $1,23.456  $19.999  19.99  $.99
